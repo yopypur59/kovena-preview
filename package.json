@@ -1,0 +1,16 @@
+{
+  "name": "kovena-web-platform",
+  "version": "1.0.0",
+  "description": "KOVENA (The Table of Four) — Official Web Platform & Interactive Onboarding",
+  "scripts": {
+    "start": "npx --yes serve . -l 3000",
+    "dev": "npx --yes serve . -l 3000"
+  },
+  "keywords": [
+    "kovena",
+    "the-table-of-four",
+    "editorial",
+    "warm-minimalism"
+  ]
+}
+

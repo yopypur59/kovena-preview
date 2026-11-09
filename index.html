@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KOVENA — The Table of Four | Tempat Orang Saling Terhubung Secara Nyata</title>
+  <meta name="description" content="KOVENA — Mengembalikan hangatnya koneksi manusia. Tempat setiap orang bisa merasa diterima, didengar dengan antusias, dan terus terhubung jauh setelah malam itu selesai. Dimulai dari empat kursi di satu meja." />
+  <meta name="theme-color" content="#F7F5F0" />
+
+  <!-- Google Fonts: Instrument Serif, Cormorant Garamond & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS Play CDN with Custom Editorial Configuration -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            alabaster: '#F7F5F0',
+            stonewarm: '#EFECE6',
+            borderwarm: '#E2DDD5',
+            espresso: '#1E1E1C',
+            earthgray: '#605C56',
+            terracotta: {
+              DEFAULT: '#B85D3B',
+              hover: '#9E4B2C',
+              soft: 'rgba(184, 93, 59, 0.10)',
+            },
+            olive: {
+              DEFAULT: '#3A4A3E',
+              soft: 'rgba(58, 74, 62, 0.10)',
+            }
+          },
+          fontFamily: {
+            serif: ['"Instrument Serif"', '"Cormorant Garamond"', 'Georgia', 'serif'],
+            editorial: ['"Cormorant Garamond"', '"Instrument Serif"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+          },
+          letterSpacing: {
+            wordmark: '0.2em',
+            eyebrow: '0.18em',
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body class="bg-alabaster text-espresso font-sans antialiased paper-grain selection:bg-terracotta/20 selection:text-espresso">
+
+  <!-- ========================================================================
+       A. MINIMALIST NAVBAR
+       ======================================================================== -->
+  <header id="site-header" class="sticky top-0 z-40 w-full bg-alabaster/90 backdrop-blur-md border-b border-borderwarm/70 transition-all duration-300">
+    <nav class="max-w-6xl mx-auto px-6 sm:px-10 h-20 flex items-center justify-between" aria-label="Navigasi Utama">
+      <!-- Left: Geometric minimal wordmark KOVENA -->
+      <a href="#" class="group inline-flex items-center gap-3 focus:outline-none" aria-label="KOVENA Beranda">
+        <span class="relative flex items-center justify-center w-6 h-6" aria-hidden="true">
+          <span class="w-4 h-4 rounded-sm border border-espresso/75 group-hover:border-terracotta transition-colors duration-300"></span>
+          <span class="absolute -top-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-terracotta"></span>
+          <span class="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-espresso/70"></span>
+          <span class="absolute top-1/2 -left-0.5 -translate-y-1/2 w-1 h-1 rounded-full bg-espresso/70"></span>
+          <span class="absolute top-1/2 -right-0.5 -translate-y-1/2 w-1 h-1 rounded-full bg-espresso/70"></span>
+        </span>
+        <span class="text-sm sm:text-base font-medium tracking-[0.2em] text-espresso uppercase">KOVENA</span>
+      </a>
+
+      <!-- Right: Subtle links + 1 quiet button -->
+      <div class="hidden md:flex items-center gap-9">
+        <a href="#filosofi" class="editorial-link text-sm text-earthgray hover:text-espresso transition-colors duration-200">
+          Filosofi
+        </a>
+        <a href="#pengalaman" class="editorial-link text-sm text-earthgray hover:text-espresso transition-colors duration-200">
+          Pengalaman
+        </a>
+        <a href="#cara-kerja" class="editorial-link text-sm text-earthgray hover:text-espresso transition-colors duration-200">
+          Cara Kerja
+        </a>
+        <button
+          type="button"
+          data-open-onboarding
+          class="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-espresso bg-stonewarm hover:bg-terracotta hover:text-alabaster border border-borderwarm hover:border-terracotta rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-terracotta/40"
+        >
+          <span>Ambil Kursi</span>
+          <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Menu & Action -->
+      <div class="flex items-center gap-3 md:hidden">
+        <button
+          type="button"
+          data-open-onboarding
+          class="px-4 py-2 text-xs font-medium text-alabaster bg-terracotta hover:bg-terracotta-hover rounded-full transition-colors duration-200"
+        >
+          Ambil Kursi
+        </button>
+        <button
+          type="button"
+          id="mobile-menu-toggle"
+          class="p-2 text-espresso hover:text-terracotta focus:outline-none"
+          aria-expanded="false"
+          aria-controls="mobile-nav-drawer"
+          aria-label="Buka menu navigasi"
+        >
+          <i data-lucide="menu" class="w-5 h-5" id="menu-icon-open"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Subtle Mobile Navigation Drawer -->
+    <div id="mobile-nav-drawer" class="hidden md:hidden bg-alabaster border-b border-borderwarm px-6 py-6 space-y-4">
+      <div class="flex flex-col space-y-3">
+        <a href="#filosofi" class="mobile-nav-link text-base text-espresso py-1.5 border-b border-borderwarm/50">Filosofi</a>
+        <a href="#pengalaman" class="mobile-nav-link text-base text-espresso py-1.5 border-b border-borderwarm/50">Pengalaman</a>
+        <a href="#isi-kepala" class="mobile-nav-link text-base text-espresso py-1.5 border-b border-borderwarm/50">Isi Kepala di Meja</a>
+        <a href="#cara-kerja" class="mobile-nav-link text-base text-espresso py-1.5">Cara Kerja</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ======================================================================
+         B. HERO SECTION (ABOVE THE FOLD)
+         ====================================================================== -->
+    <section class="relative overflow-hidden pt-12 pb-20 sm:pt-20 sm:pb-28 lg:pt-24 lg:pb-32 border-b border-borderwarm/70">
+      <div class="max-w-6xl mx-auto px-6 sm:px-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+
+          <!-- Left Column: Editorial Copy & Primary CTA -->
+          <div class="lg:col-span-7 space-y-8 reveal-up">
+            <!-- Eyebrow -->
+            <div class="inline-flex items-center gap-3">
+              <span class="w-6 h-px bg-terracotta" aria-hidden="true"></span>
+              <p class="text-xs sm:text-xs font-medium tracking-[0.18em] uppercase text-earthgray">
+                KOVENA — THE TABLE OF FOUR
+              </p>
+            </div>
+
+            <!-- Main Headline (Serif, Large) -->
+            <h1 class="font-serif text-4xl sm:text-6xl lg:text-[4.15rem] leading-[1.08] tracking-tight text-espresso">
+              Tempat orang saling <span class="italic font-normal text-terracotta">terhubung</span> secara nyata.
+            </h1>
+
+            <!-- Sub-headline -->
+            <p class="text-base sm:text-lg lg:text-[1.15rem] text-earthgray leading-[1.8] max-w-2xl font-normal">
+              Mengembalikan hangatnya koneksi manusia—tempat setiap orang bisa merasa diterima, didengar dengan antusias, dan terus terhubung jauh setelah malam itu selesai. Dimulai dari empat kursi di satu meja.
+            </p>
+
+            <!-- Primary CTA Button & Subtle Atmosphere Note -->
+            <div class="pt-2 flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-7">
+              <button
+                type="button"
+                data-open-onboarding
+                class="group inline-flex items-center justify-center gap-3 px-8 py-4 text-sm sm:text-base font-medium text-alabaster bg-terracotta hover:bg-terracotta-hover rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-terracotta/50 focus:ring-offset-2 focus:ring-offset-alabaster"
+              >
+                <span>Ambil Kursimu</span>
+                <i data-lucide="arrow-right" class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"></i>
+              </button>
+
+              <div class="flex items-center gap-3 text-xs sm:text-sm text-earthgray">
+                <span class="inline-block w-2 h-2 rounded-full bg-olive" aria-hidden="true"></span>
+                <span>4 orang per meja &middot; Tatap muka tanpa distraksi layar</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive Minimalist Geometric Illustration of "The Table of Four" -->
+          <div class="lg:col-span-5 reveal-up reveal-delay-1">
+            <figure class="relative mx-auto max-w-md bg-stonewarm/80 border border-borderwarm rounded-2xl p-6 sm:p-8">
+              <!-- Top subtle header inside illustration frame -->
+              <div class="flex items-center justify-between text-[11px] uppercase tracking-[0.16em] text-earthgray pb-3 border-b border-borderwarm/80">
+                <span>Meja No. 04 &mdash; Senja</span>
+                <span id="table-active-indicator" class="text-terracotta font-medium">Sentuh Kursi</span>
+              </div>
+
+              <!-- Interactive SVG Diagram: The Table of Four -->
+              <div class="relative my-2 flex items-center justify-center">
+                <svg
+                  id="table-of-four-svg"
+                  viewBox="0 0 440 440"
+                  class="w-full h-auto max-h-[340px] select-none"
+                  role="img"
+                  aria-label="Ilustrasi geometris interaktif The Table of Four: empat kursi mengelilingi satu meja hangat"
+                >
+                  <defs>
+                    <!-- Soft evening light radial gradient (subtle, warm paper/terracotta) -->
+                    <radialGradient id="eveningGlow" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stop-color="#B85D3B" stop-opacity="0.18" />
+                      <stop offset="60%" stop-color="#B85D3B" stop-opacity="0.05" />
+                      <stop offset="100%" stop-color="#F7F5F0" stop-opacity="0" />
+                    </radialGradient>
+                  </defs>
+
+                  <!-- Warm Evening Atmosphere Ring -->
+                  <circle cx="220" cy="220" r="185" fill="url(#eveningGlow)" class="ambient-glow" />
+
+                  <!-- Outer Architectural Compass Ring -->
+                  <circle cx="220" cy="220" r="156" fill="none" stroke="#DFD9CE" stroke-width="1" />
+                  <circle cx="220" cy="220" r="132" fill="none" stroke="#E2DDD5" stroke-width="1" stroke-dasharray="3 6" class="orbit-ring" />
+
+                  <!-- Subtle Axis Lines -->
+                  <line x1="220" y1="36" x2="220" y2="404" stroke="#E2DDD5" stroke-width="0.75" />
+                  <line x1="36" y1="220" x2="404" y2="220" stroke="#E2DDD5" stroke-width="0.75" />
+
+                  <!-- Connection Lines Between the 4 Individuals -->
+                  <g id="connection-lines">
+                    <line data-connect="1-2" class="connection-thread highlighted" x1="220" y1="64" x2="376" y2="220" stroke="#B85D3B" stroke-opacity="0.35" stroke-width="1.2" />
+                    <line data-connect="2-3" class="connection-thread" x1="376" y1="220" x2="220" y2="376" stroke="#3A4A3E" stroke-opacity="0.25" stroke-width="1" />
+                    <line data-connect="3-4" class="connection-thread" x1="220" y1="376" x2="64" y2="220" stroke="#3A4A3E" stroke-opacity="0.25" stroke-width="1" />
+                    <line data-connect="4-1" class="connection-thread highlighted" x1="64" y1="220" x2="220" y2="64" stroke="#B85D3B" stroke-opacity="0.35" stroke-width="1.2" />
+                    <!-- Cross-table dialogue threads -->
+                    <line data-connect="1-3" class="connection-thread highlighted" x1="220" y1="64" x2="220" y2="376" stroke="#B85D3B" stroke-opacity="0.4" stroke-width="1.2" stroke-dasharray="4 4" />
+                    <line data-connect="2-4" class="connection-thread" x1="64" y1="220" x2="376" y2="220" stroke="#3A4A3E" stroke-opacity="0.28" stroke-width="1" stroke-dasharray="4 4" />
+                  </g>
+
+                  <!-- The Central Table (Warm Rounded Square + Inner Circle) -->
+                  <rect
+                    x="142"
+                    y="142"
+                    width="156"
+                    height="156"
+                    rx="26"
+                    fill="#F7F5F0"
+                    stroke="#CFC8BC"
+                    stroke-width="1.5"
+                  />
+                  <rect
+                    x="154"
+                    y="154"
+                    width="132"
+                    height="132"
+                    rx="18"
+                    fill="#EFECE6"
+                    stroke="#E2DDD5"
+                    stroke-width="1"
+                  />
+
+                  <!-- Center Candle / Warm Light Source on Table -->
+                  <circle cx="220" cy="220" r="24" fill="#F7F5F0" stroke="#D5CEC2" stroke-width="1" />
+                  <circle cx="220" cy="220" r="6" fill="#B85D3B" />
+                  <circle cx="220" cy="220" r="13" fill="none" stroke="#B85D3B" stroke-opacity="0.35" stroke-width="1" />
+
+                  <!-- 4 Subtle Tableware/Prompt Card Accents on the Table -->
+                  <rect x="206" y="164" width="28" height="16" rx="3" fill="#F7F5F0" stroke="#D5CEC2" stroke-width="1" />
+                  <rect x="260" y="206" width="16" height="28" rx="3" fill="#F7F5F0" stroke="#D5CEC2" stroke-width="1" />
+                  <rect x="206" y="260" width="28" height="16" rx="3" fill="#F7F5F0" stroke="#D5CEC2" stroke-width="1" />
+                  <rect x="164" y="206" width="16" height="28" rx="3" fill="#F7F5F0" stroke="#D5CEC2" stroke-width="1" />
+
+                  <!-- SEAT 01 (Top / North) -->
+                  <g class="seat-node active" data-seat="1" tabindex="0" role="button" aria-label="Kursi 01: Cerita yang Jujur">
+                    <circle class="seat-outer" cx="220" cy="64" r="24" fill="#F7F5F0" stroke="#B85D3B" stroke-width="1.5" />
+                    <circle class="seat-core" cx="220" cy="64" r="7" fill="#B85D3B" />
+                    <text x="220" y="28" text-anchor="middle" fill="#605C56" font-size="10" letter-spacing="2" font-family="Plus Jakarta Sans">KURSI 01</text>
+                  </g>
+
+                  <!-- SEAT 02 (Right / East) -->
+                  <g class="seat-node" data-seat="2" tabindex="0" role="button" aria-label="Kursi 02: Perspektif Baru">
+                    <circle class="seat-outer" cx="376" cy="220" r="24" fill="#EFECE6" stroke="#CFC8BC" stroke-width="1.5" />
+                    <circle class="seat-core" cx="376" cy="220" r="7" fill="#3A4A3E" />
+                    <text x="376" y="184" text-anchor="middle" fill="#605C56" font-size="10" letter-spacing="2" font-family="Plus Jakarta Sans">KURSI 02</text>
+                  </g>
+
+                  <!-- SEAT 03 (Bottom / South) -->
+                  <g class="seat-node" data-seat="3" tabindex="0" role="button" aria-label="Kursi 03: Pendengar Antusias">
+                    <circle class="seat-outer" cx="220" cy="376" r="24" fill="#EFECE6" stroke="#CFC8BC" stroke-width="1.5" />
+                    <circle class="seat-core" cx="220" cy="376" r="7" fill="#1E1E1C" />
+                    <text x="220" y="416" text-anchor="middle" fill="#605C56" font-size="10" letter-spacing="2" font-family="Plus Jakarta Sans">KURSI 03</text>
+                  </g>
+
+                  <!-- SEAT 04 (Left / West — Your Seat) -->
+                  <g class="seat-node" data-seat="4" tabindex="0" role="button" aria-label="Kursi 04: Kursimu Malam Ini">
+                    <circle class="seat-outer" cx="64" cy="220" r="24" fill="#EFECE6" stroke="#B85D3B" stroke-dasharray="4 3" stroke-width="1.5" />
+                    <circle class="seat-core" cx="64" cy="220" r="7" fill="#B85D3B" />
+                    <text x="64" y="184" text-anchor="middle" fill="#B85D3B" font-size="10" letter-spacing="2" font-weight="600" font-family="Plus Jakarta Sans">KURSIMU</text>
+                  </g>
+                </svg>
+              </div>
+
+              <!-- Interactive Caption Card Updating on Seat Hover/Click -->
+              <figcaption id="seat-caption-box" class="pt-4 border-t border-borderwarm/80 flex items-start justify-between gap-4">
+                <div>
+                  <p id="seat-caption-title" class="text-xs font-medium uppercase tracking-[0.15em] text-terracotta">
+                    Kursi 01 &mdash; Latar Belakang Berbeda
+                  </p>
+                  <p id="seat-caption-desc" class="mt-1 text-sm text-earthgray leading-relaxed">
+                    Empat individu yang belum pernah bertemu, duduk setara membawa cerita dan rasa ingin tahu yang tulus.
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  id="cycle-seat-btn"
+                  class="shrink-0 p-2 rounded-full border border-borderwarm text-earthgray hover:text-espresso hover:border-espresso transition-colors"
+                  aria-label="Lihat kursi berikutnya"
+                  title="Lihat kursi berikutnya"
+                >
+                  <i data-lucide="rotate-cw" class="w-4 h-4"></i>
+                </button>
+              </figcaption>
+            </figure>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         C. SECTION 2: THE MANIFESTO (WHY — EMOTIONAL RESONANCE)
+         ====================================================================== -->
+    <section id="filosofi" class="py-28 px-6 sm:px-10 bg-alabaster border-b border-borderwarm/70">
+      <div class="max-w-3xl mx-auto text-center reveal-up">
+        <!-- Small Editorial Index -->
+        <p class="text-xs uppercase tracking-[0.2em] text-terracotta mb-6">
+          I &mdash; Filosofi Kami
+        </p>
+
+        <!-- Heading -->
+        <h2 class="font-serif text-3xl sm:text-5xl lg:text-[3.35rem] leading-[1.15] text-espresso mb-12">
+          Kapan terakhir kali kamu merasa <span class="italic font-normal">benar-benar didengar?</span>
+        </h2>
+
+        <!-- Editorial Divider -->
+        <div class="w-12 h-px bg-terracotta/60 mx-auto mb-12" aria-hidden="true"></div>
+
+        <!-- Body Copy -->
+        <div class="space-y-8 text-base sm:text-lg lg:text-xl text-earthgray leading-[1.9] font-normal text-left sm:text-center">
+          <p>
+            Kita hidup di zaman di mana berkumpul menjadi sangat mudah, namun merasa terhubung menjadi sangat langka. Kita duduk di tempat yang sama, tapi pikiran masing-masing sibuk terhisap oleh layar. Kita pulang dari keramaian dengan perasaan yang tetap sendirian.
+          </p>
+          <p class="text-espresso/90">
+            KOVENA lahir dari satu keyakinan sederhana: untuk benar-benar bahagia, manusia butuh hadir secara utuh bersama manusia lain. Duduk tenang, berbagi cerita dari latar belakang yang berbeda, dan saling mendengarkan dengan rasa ingin tahu yang tulus—seperti mengobrol bersama teman di sore yang teduh hingga lupa waktu.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         D. SECTION 3: THE EXPERIENCE (HOW — ATMOSPHERIC PILLARS)
+         ====================================================================== -->
+    <section id="pengalaman" class="py-24 sm:py-28 px-6 sm:px-10 bg-alabaster border-b border-borderwarm/70">
+      <div class="max-w-6xl mx-auto">
+        <!-- Section Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 sm:mb-16 gap-6 reveal-up">
+          <div>
+            <p class="text-xs uppercase tracking-[0.2em] text-olive mb-4">
+              II &mdash; Pengalaman di Meja
+            </p>
+            <h2 class="font-serif text-3xl sm:text-5xl text-espresso leading-[1.12]">
+              Ruang untuk <span class="italic font-normal">Hadir Sepenuhnya.</span>
+            </h2>
+          </div>
+          <p class="text-sm sm:text-base text-earthgray max-w-md leading-relaxed">
+            Bukan ajang jejaring bisnis yang kaku, bukan pula keramaian yang melelahkan. Hanya empat kursi dan suasana senja yang tenang.
+          </p>
+        </div>
+
+        <!-- 3 Clean Editorial Cards (#EFECE6 background, thin subtle border #E2DDD5, no heavy drop shadows) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          <!-- Pillar 1 -->
+          <article class="pillar-card bg-[#EFECE6] border border-[#E2DDD5] rounded-2xl p-8 sm:p-10 flex flex-col justify-between reveal-up">
+            <div>
+              <div class="flex items-center justify-between mb-8">
+                <span class="font-serif italic text-2xl text-terracotta">01</span>
+                <span class="w-9 h-9 rounded-full bg-alabaster border border-[#E2DDD5] flex items-center justify-center text-espresso">
+                  <i data-lucide="heart-handshake" class="w-4 h-4"></i>
+                </span>
+              </div>
+              <h3 class="font-serif text-2xl sm:text-[1.7rem] text-espresso mb-4 leading-snug">
+                01 / Merasa Diterima (Belong)
+              </h3>
+              <p class="text-earthgray text-base leading-[1.8]">
+                Datanglah apa adanya. Di meja ini, perbedaan latar belakang dan cerita hidup justru menjadi alasan untuk saling mengenal tanpa penghakiman.
+              </p>
+            </div>
+            <div class="mt-8 pt-5 border-t border-[#E2DDD5] flex items-center justify-between text-xs uppercase tracking-[0.15em] text-earthgray">
+              <span>Tanpa Topeng</span>
+              <span>Setara</span>
+            </div>
+          </article>
+
+          <!-- Pillar 2 -->
+          <article class="pillar-card bg-[#EFECE6] border border-[#E2DDD5] rounded-2xl p-8 sm:p-10 flex flex-col justify-between reveal-up reveal-delay-1">
+            <div>
+              <div class="flex items-center justify-between mb-8">
+                <span class="font-serif italic text-2xl text-terracotta">02</span>
+                <span class="w-9 h-9 rounded-full bg-alabaster border border-[#E2DDD5] flex items-center justify-center text-espresso">
+                  <i data-lucide="sparkles" class="w-4 h-4"></i>
+                </span>
+              </div>
+              <h3 class="font-serif text-2xl sm:text-[1.7rem] text-espresso mb-4 leading-snug">
+                02 / Didengar dengan Antusias
+              </h3>
+              <p class="text-earthgray text-base leading-[1.8]">
+                Tanpa distraksi layar dan tanpa obrolan yang dangkal. Setiap orang punya ruang yang setara untuk bercerita dan disimak dengan rasa ingin tahu yang tulus.
+              </p>
+            </div>
+            <div class="mt-8 pt-5 border-t border-[#E2DDD5] flex items-center justify-between text-xs uppercase tracking-[0.15em] text-earthgray">
+              <span>Bebas Layar</span>
+              <span>Hadir Utuh</span>
+            </div>
+          </article>
+
+          <!-- Pillar 3 -->
+          <article class="pillar-card bg-[#EFECE6] border border-[#E2DDD5] rounded-2xl p-8 sm:p-10 flex flex-col justify-between reveal-up reveal-delay-2">
+            <div>
+              <div class="flex items-center justify-between mb-8">
+                <span class="font-serif italic text-2xl text-terracotta">03</span>
+                <span class="w-9 h-9 rounded-full bg-alabaster border border-[#E2DDD5] flex items-center justify-center text-espresso">
+                  <i data-lucide="compass" class="w-4 h-4"></i>
+                </span>
+              </div>
+              <h3 class="font-serif text-2xl sm:text-[1.7rem] text-espresso mb-4 leading-snug">
+                03 / Ikatan yang Berlanjut
+              </h3>
+              <p class="text-earthgray text-base leading-[1.8]">
+                Pertemuan tidak berhenti saat acara usai. Setelah dari meja ini, kamu tetap terhubung dengan teman semejamu maupun lingkaran pertemanan KOVENA lainnya.
+              </p>
+            </div>
+            <div class="mt-8 pt-5 border-t border-[#E2DDD5] flex items-center justify-between text-xs uppercase tracking-[0.15em] text-earthgray">
+              <span>Jangka Panjang</span>
+              <span>Lingkaran Hangat</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         E. SECTION 4: INTERACTIVE PREVIEW — "ISI KEPALA DI MEJA KOVENA"
+         ====================================================================== -->
+    <section id="isi-kepala" class="py-24 sm:py-28 px-6 sm:px-10 bg-stonewarm/70 border-b border-borderwarm/70">
+      <div class="max-w-5xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+          <!-- Left Column: Description & Card Controls -->
+          <div class="lg:col-span-5 space-y-6 reveal-up">
+            <p class="text-xs uppercase tracking-[0.2em] text-terracotta">
+              III &mdash; Kartu Percakapan
+            </p>
+            <h2 class="font-serif text-3xl sm:text-5xl text-espresso leading-[1.12]">
+              Isi Kepala di <span class="italic font-normal">Meja KOVENA</span>
+            </h2>
+            <p class="text-base text-earthgray leading-[1.8]">
+              Kami menyiapkan pemantik obrolan yang dirancang dengan hangat—bukan untuk menguji, melainkan untuk membuka pintu cerita yang jarang kita bagikan sehari-hari.
+            </p>
+
+            <!-- Interactive Navigation Controls -->
+            <div class="pt-2 flex items-center gap-4">
+              <button
+                type="button"
+                id="prev-prompt-btn"
+                class="inline-flex items-center justify-center w-11 h-11 rounded-full bg-alabaster border border-borderwarm text-espresso hover:border-terracotta hover:text-terracotta transition-colors focus:outline-none"
+                aria-label="Kartu pertanyaan sebelumnya"
+              >
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+              </button>
+
+              <button
+                type="button"
+                id="next-prompt-btn"
+                class="inline-flex items-center gap-2.5 px-5 h-11 rounded-full bg-alabaster border border-borderwarm text-sm font-medium text-espresso hover:border-terracotta hover:text-terracotta transition-colors focus:outline-none"
+                aria-label="Balik kartu berikutnya"
+              >
+                <span>Balik Kartu</span>
+                <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
+              </button>
+
+              <span id="prompt-counter" class="ml-2 text-xs uppercase tracking-[0.18em] text-earthgray">
+                01 / 03
+              </span>
+            </div>
+
+            <!-- Direct Indicator Pills -->
+            <div class="flex items-center gap-2 pt-2" role="tablist" aria-label="Pilih kartu percakapan">
+              <button type="button" data-prompt-dot="0" class="h-1.5 w-8 rounded-full bg-terracotta transition-all duration-300" aria-label="Kartu 1"></button>
+              <button type="button" data-prompt-dot="1" class="h-1.5 w-3 rounded-full bg-borderwarm hover:bg-earthgray/50 transition-all duration-300" aria-label="Kartu 2"></button>
+              <button type="button" data-prompt-dot="2" class="h-1.5 w-3 rounded-full bg-borderwarm hover:bg-earthgray/50 transition-all duration-300" aria-label="Kartu 3"></button>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive Tactile Stack of 3 Prompt Cards -->
+          <div class="lg:col-span-7 reveal-up reveal-delay-1">
+            <div class="prompt-card-stage relative h-[340px] sm:h-[360px] w-full max-w-xl mx-auto select-none">
+
+              <!-- Card 1 -->
+              <div
+                class="prompt-card absolute inset-0 rounded-2xl border p-8 sm:p-11 flex flex-col justify-between cursor-pointer"
+                data-card-index="0"
+                data-position="0"
+                role="button"
+                tabindex="0"
+                aria-label="Kartu Percakapan 1. Klik untuk membalik ke kartu berikutnya."
+              >
+                <div class="flex items-center justify-between text-xs uppercase tracking-[0.18em] text-earthgray">
+                  <span>KOVENA &mdash; Kartu 01</span>
+                  <span class="text-terracotta">Pemanasan Hangat</span>
+                </div>
+
+                <blockquote class="my-auto py-4">
+                  <p class="font-serif italic text-2xl sm:text-4xl text-espresso leading-[1.3]">
+                    &ldquo;Apa satu hal sederhana yang belakangan ini bikin kamu merasa paling hidup?&rdquo;
+                  </p>
+                </blockquote>
+
+                <div class="pt-4 border-t border-borderwarm/80 flex items-center justify-between text-xs text-earthgray">
+                  <span>Ketuk kartu untuk melihat pertanyaan berikutnya</span>
+                  <span class="inline-flex items-center gap-1 text-terracotta font-medium">
+                    Selanjutnya <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Card 2 -->
+              <div
+                class="prompt-card absolute inset-0 rounded-2xl border p-8 sm:p-11 flex flex-col justify-between cursor-pointer"
+                data-card-index="1"
+                data-position="1"
+                role="button"
+                tabindex="0"
+                aria-label="Kartu Percakapan 2. Klik untuk membalik ke kartu berikutnya."
+              >
+                <div class="flex items-center justify-between text-xs uppercase tracking-[0.18em] text-earthgray">
+                  <span>KOVENA &mdash; Kartu 02</span>
+                  <span class="text-olive">Imajinasi &amp; Makna</span>
+                </div>
+
+                <blockquote class="my-auto py-4">
+                  <p class="font-serif italic text-2xl sm:text-4xl text-espresso leading-[1.3]">
+                    &ldquo;Kalau waktu dan uang bukan masalah, sore hari seperti apa yang paling ingin kamu jalani?&rdquo;
+                  </p>
+                </blockquote>
+
+                <div class="pt-4 border-t border-borderwarm/80 flex items-center justify-between text-xs text-earthgray">
+                  <span>Ketuk kartu untuk melihat pertanyaan berikutnya</span>
+                  <span class="inline-flex items-center gap-1 text-terracotta font-medium">
+                    Selanjutnya <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Card 3 -->
+              <div
+                class="prompt-card absolute inset-0 rounded-2xl border p-8 sm:p-11 flex flex-col justify-between cursor-pointer"
+                data-card-index="2"
+                data-position="2"
+                role="button"
+                tabindex="0"
+                aria-label="Kartu Percakapan 3. Klik untuk membalik ke kartu berikutnya."
+              >
+                <div class="flex items-center justify-between text-xs uppercase tracking-[0.18em] text-earthgray">
+                  <span>KOVENA &mdash; Kartu 03</span>
+                  <span class="text-terracotta">Refleksi Jujur</span>
+                </div>
+
+                <blockquote class="my-auto py-4">
+                  <p class="font-serif italic text-2xl sm:text-4xl text-espresso leading-[1.3]">
+                    &ldquo;Hal apa yang dulu sangat kamu khawatirkan, tapi sekarang kamu syukuri pernah terjadi?&rdquo;
+                  </p>
+                </blockquote>
+
+                <div class="pt-4 border-t border-borderwarm/80 flex items-center justify-between text-xs text-earthgray">
+                  <span>Ketuk kartu untuk kembali ke kartu pertama</span>
+                  <span class="inline-flex items-center gap-1 text-terracotta font-medium">
+                    Putar Ulang <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                  </span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         F. SECTION 5: HOW IT WORKS (WHAT — LOGICALLY SIMPLE)
+         ====================================================================== -->
+    <section id="cara-kerja" class="py-24 sm:py-28 px-6 sm:px-10 bg-alabaster border-b border-borderwarm/70">
+      <div class="max-w-6xl mx-auto">
+        <!-- Heading -->
+        <div class="text-center max-w-2xl mx-auto mb-16 sm:mb-20 reveal-up">
+          <p class="text-xs uppercase tracking-[0.2em] text-olive mb-4">
+            IV &mdash; Cara Kerja
+          </p>
+          <h2 class="font-serif text-3xl sm:text-5xl text-espresso leading-[1.12]">
+            Dimulai dari <span class="italic font-normal">Satu Meja Berempat.</span>
+          </h2>
+        </div>
+
+        <!-- 3 Horizontal Steps -->
+        <div class="relative grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-12">
+          <!-- Subtle horizontal connecting line on desktop -->
+          <div class="hidden md:block absolute top-7 left-[16%] right-[16%] h-px bg-borderwarm" aria-hidden="true"></div>
+
+          <!-- Langkah 1 -->
+          <div class="relative flex flex-col items-start md:items-center md:text-center reveal-up">
+            <div class="relative z-10 w-14 h-14 rounded-full bg-stonewarm border border-borderwarm flex items-center justify-center mb-6 text-terracotta font-serif italic text-2xl">
+              1
+            </div>
+            <h3 class="font-serif text-2xl sm:text-[1.65rem] text-espresso mb-3">
+              Langkah 1: Ceritakan Tentangmu
+            </h3>
+            <p class="text-earthgray text-base leading-[1.8] max-w-sm">
+              Isi profil singkat agar kami dapat menyusun meja berisi empat orang yang siap saling mendengarkan.
+            </p>
+          </div>
+
+          <!-- Langkah 2 -->
+          <div class="relative flex flex-col items-start md:items-center md:text-center reveal-up reveal-delay-1">
+            <div class="relative z-10 w-14 h-14 rounded-full bg-stonewarm border border-borderwarm flex items-center justify-center mb-6 text-terracotta font-serif italic text-2xl">
+              2
+            </div>
+            <h3 class="font-serif text-2xl sm:text-[1.65rem] text-espresso mb-3">
+              Langkah 2: Duduk Satu Meja
+            </h3>
+            <p class="text-earthgray text-base leading-[1.8] max-w-sm">
+              Bertemu langsung di tempat yang tenang untuk obrolan tatap muka yang hangat dan jujur.
+            </p>
+          </div>
+
+          <!-- Langkah 3 -->
+          <div class="relative flex flex-col items-start md:items-center md:text-center reveal-up reveal-delay-2">
+            <div class="relative z-10 w-14 h-14 rounded-full bg-stonewarm border border-borderwarm flex items-center justify-center mb-6 text-terracotta font-serif italic text-2xl">
+              3
+            </div>
+            <h3 class="font-serif text-2xl sm:text-[1.65rem] text-espresso mb-3">
+              Langkah 3: Tetap Terhubung
+            </h3>
+            <p class="text-earthgray text-base leading-[1.8] max-w-sm">
+              Melanjutkan pertemanan dan terhubung dengan jaringan peserta dari meja-meja KOVENA lainnya.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         G. SECTION 6: VOICES FROM THE TABLE (SOCIAL PROOF)
+         ====================================================================== -->
+    <section id="suara-meja" class="py-24 sm:py-32 px-6 sm:px-10 bg-stonewarm border-b border-borderwarm/70">
+      <div class="max-w-4xl mx-auto text-center reveal-up">
+        <p class="text-xs uppercase tracking-[0.2em] text-terracotta mb-8">
+          V &mdash; Suara dari Meja KOVENA
+        </p>
+
+        <figure class="relative">
+          <div class="font-serif text-5xl sm:text-6xl text-terracotta/40 leading-none select-none mb-4" aria-hidden="true">
+            &ldquo;
+          </div>
+          <blockquote class="font-serif italic text-2xl sm:text-4xl lg:text-[2.5rem] text-espresso leading-[1.4] tracking-tight">
+            &ldquo;Awalnya nggak nyangka ada obrolan sedalam dan sejujur ini bareng orang yang baru kenal. Anehnya, dari latar belakang yang beda-beda, kami malah langsung akrab karena semuanya beneran saling dengerin. Pulang dari sana rasanya penuh banget—dan senangnya, sampai sekarang kami masih terus berteman.&rdquo;
+          </blockquote>
+          <figcaption class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-xs sm:text-sm text-earthgray uppercase tracking-[0.16em]">
+            <span class="text-espresso font-medium">Peserta Meja Perdana</span>
+            <span class="hidden sm:inline text-terracotta">&bull;</span>
+            <span>Surabaya &mdash; Sesi Senja</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         QUIET CLOSING INVITATION SECTION
+         ====================================================================== -->
+    <section class="py-24 sm:py-28 px-6 sm:px-10 bg-alabaster">
+      <div class="max-w-3xl mx-auto text-center space-y-8 reveal-up">
+        <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-stonewarm border border-borderwarm text-terracotta">
+          <i data-lucide="lamp-desk" class="w-5 h-5"></i>
+        </div>
+        <h2 class="font-serif text-3xl sm:text-5xl text-espresso leading-[1.15]">
+          Ada satu kursi yang kami siapkan <span class="italic font-normal text-terracotta">untukmu.</span>
+        </h2>
+        <p class="text-base sm:text-lg text-earthgray leading-[1.85] max-w-xl mx-auto">
+          Bawa ceritamu, rasa ingin tahumu, dan kehadiranmu. Kami yang akan menyiapkan meja dan tiga teman baru yang siap mendengarkan.
+        </p>
+        <div class="pt-2">
+          <button
+            type="button"
+            data-open-onboarding
+            class="group inline-flex items-center gap-3 px-9 py-4 text-sm sm:text-base font-medium text-alabaster bg-terracotta hover:bg-terracotta-hover rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-terracotta/50"
+          >
+            <span>Ambil Kursimu</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       MINIMALIST EDITORIAL FOOTER
+       ======================================================================== -->
+  <footer class="bg-stonewarm border-t border-borderwarm py-14 px-6 sm:px-10">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
+      <div class="space-y-2">
+        <p class="text-sm font-medium tracking-[0.2em] uppercase text-espresso">KOVENA</p>
+        <p class="text-xs text-earthgray">The Table of Four &mdash; Tempat orang saling terhubung secara nyata.</p>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-6 text-xs text-earthgray">
+        <a href="#filosofi" class="hover:text-espresso transition-colors">Filosofi</a>
+        <a href="#pengalaman" class="hover:text-espresso transition-colors">Pengalaman</a>
+        <a href="#isi-kepala" class="hover:text-espresso transition-colors">Isi Kepala</a>
+        <a href="#cara-kerja" class="hover:text-espresso transition-colors">Cara Kerja</a>
+        <button type="button" data-open-onboarding class="text-terracotta hover:underline font-medium">
+          Ambil Kursimu
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       H. SECTION 7: INTERACTIVE ONBOARDING MODAL ("AMBIL KURSIMU")
+       Typeform-style calm multi-step onboarding, 1 question at a time
+       ======================================================================== -->
+  <div
+    id="onboarding-modal"
+    class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-espresso/45 backdrop-blur-sm"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="onboarding-modal-title"
+    aria-hidden="true"
+  >
+    <div class="modal-panel relative w-full max-w-xl bg-alabaster border border-borderwarm rounded-2xl p-6 sm:p-10 overflow-hidden">
+
+      <!-- Top Bar: Progress & Close Button -->
+      <div class="flex items-center justify-between pb-6 border-b border-borderwarm/80">
+        <div class="flex items-center gap-3">
+          <span class="text-xs uppercase tracking-[0.2em] text-terracotta font-medium" id="modal-step-indicator">
+            Langkah 01 / 03
+          </span>
+          <div class="w-24 h-1 bg-stonewarm rounded-full overflow-hidden">
+            <div id="modal-progress-bar" class="h-full bg-terracotta transition-all duration-500 w-1/3"></div>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          id="close-onboarding-btn"
+          class="p-2 rounded-full text-earthgray hover:text-espresso hover:bg-stonewarm transition-colors focus:outline-none"
+          aria-label="Tutup jendela pendaftaran"
+        >
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <!-- Multi-Step Onboarding Form -->
+      <form id="onboarding-form" class="pt-8" novalidate>
+
+        <!-- STEP 1: "Siapa nama panggilanmu?" -->
+        <div class="step-slide active" data-step="1">
+          <p class="text-xs uppercase tracking-[0.16em] text-earthgray mb-2">
+            Perkenalan Pertama
+          </p>
+          <h3 id="onboarding-modal-title" class="font-serif text-3xl sm:text-4xl text-espresso mb-3 leading-snug">
+            Siapa nama panggilanmu?
+          </h3>
+          <p class="text-sm text-earthgray mb-8 leading-relaxed">
+            Nama yang paling nyaman digunakan saat teman semejamu menyapamu nanti.
+          </p>
+
+          <div class="space-y-2">
+            <label for="input-nickname" class="sr-only">Nama panggilanmu</label>
+            <input
+              type="text"
+              id="input-nickname"
+              name="nickname"
+              autocomplete="given-name"
+              placeholder="Ketik nama panggilanmu di sini..."
+              class="w-full bg-stonewarm/70 border-b-2 border-borderwarm focus:border-terracotta px-4 py-4 text-lg sm:text-xl text-espresso placeholder:text-earthgray/50 rounded-t-lg focus:outline-none transition-colors"
+              required
+            />
+            <p id="error-step-1" class="hidden text-xs text-terracotta pt-1">
+              Boleh beri tahu kami nama panggilanmu terlebih dahulu?
+            </p>
+          </div>
+
+          <div class="mt-10 flex items-center justify-between">
+            <span class="text-xs text-earthgray hidden sm:inline">
+              Tekan <kbd class="px-1.5 py-0.5 text-[11px] bg-stonewarm border border-borderwarm rounded">Enter</kbd> untuk lanjut
+            </span>
+            <button
+              type="button"
+              id="next-to-step-2"
+              class="ml-auto inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-terracotta hover:bg-terracotta-hover text-alabaster text-sm font-medium transition-colors"
+            >
+              <span>Lanjut</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 2: "Apa yang paling kamu rindukan dari sebuah obrolan?" -->
+        <div class="step-slide" data-step="2">
+          <p class="text-xs uppercase tracking-[0.16em] text-earthgray mb-2">
+            Niat di Meja, <span id="greeting-nickname" class="text-terracotta font-medium">Teman</span>
+          </p>
+          <h3 class="font-serif text-3xl sm:text-4xl text-espresso mb-3 leading-snug">
+            Apa yang paling kamu rindukan dari sebuah obrolan?
+          </h3>
+          <p class="text-sm text-earthgray mb-6 leading-relaxed">
+            Pilih satu yang paling mewakili perasaanmu saat ini.
+          </p>
+
+          <div class="space-y-3" role="radiogroup" aria-label="Apa yang paling kamu rindukan dari sebuah obrolan?">
+            <!-- Option 1 -->
+            <label class="longing-option flex items-start gap-4 p-4 rounded-xl border border-borderwarm bg-stonewarm/50 cursor-pointer">
+              <input
+                type="radio"
+                name="longing"
+                value="Didengar tanpa dihakimi"
+                class="sr-only"
+              />
+              <span class="option-indicator mt-0.5 w-5 h-5 rounded-full border border-earthgray/50 flex items-center justify-center text-[11px] shrink-0 transition-colors">
+                A
+              </span>
+              <span class="text-sm sm:text-base text-espresso leading-relaxed">
+                Didengar tanpa dihakimi
+              </span>
+            </label>
+
+            <!-- Option 2 -->
+            <label class="longing-option flex items-start gap-4 p-4 rounded-xl border border-borderwarm bg-stonewarm/50 cursor-pointer">
+              <input
+                type="radio"
+                name="longing"
+                value="Bertukar pikiran dengan orang yang beda latar belakang"
+                class="sr-only"
+              />
+              <span class="option-indicator mt-0.5 w-5 h-5 rounded-full border border-earthgray/50 flex items-center justify-center text-[11px] shrink-0 transition-colors">
+                B
+              </span>
+              <span class="text-sm sm:text-base text-espresso leading-relaxed">
+                Bertukar pikiran dengan orang yang beda latar belakang
+              </span>
+            </label>
+
+            <!-- Option 3 -->
+            <label class="longing-option flex items-start gap-4 p-4 rounded-xl border border-borderwarm bg-stonewarm/50 cursor-pointer">
+              <input
+                type="radio"
+                name="longing"
+                value="Mencari teman yang beneran nyambung untuk jangka panjang"
+                class="sr-only"
+              />
+              <span class="option-indicator mt-0.5 w-5 h-5 rounded-full border border-earthgray/50 flex items-center justify-center text-[11px] shrink-0 transition-colors">
+                C
+              </span>
+              <span class="text-sm sm:text-base text-espresso leading-relaxed">
+                Mencari teman yang beneran nyambung untuk jangka panjang
+              </span>
+            </label>
+          </div>
+
+          <p id="error-step-2" class="hidden text-xs text-terracotta pt-3">
+            Pilih salah satu hal yang paling kamu rindukan dari sebuah obrolan.
+          </p>
+
+          <div class="mt-8 flex items-center justify-between">
+            <button
+              type="button"
+              id="back-to-step-1"
+              class="inline-flex items-center gap-2 px-4 py-2.5 text-sm text-earthgray hover:text-espresso transition-colors"
+            >
+              <i data-lucide="arrow-left" class="w-4 h-4"></i>
+              <span>Kembali</span>
+            </button>
+
+            <button
+              type="button"
+              id="next-to-step-3"
+              class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-terracotta hover:bg-terracotta-hover text-alabaster text-sm font-medium transition-colors"
+            >
+              <span>Lanjut</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 3: "Nomor WhatsApp & Kota domisilimu saat ini" -->
+        <div class="step-slide" data-step="3">
+          <p class="text-xs uppercase tracking-[0.16em] text-earthgray mb-2">
+            Undangan Meja
+          </p>
+          <h3 class="font-serif text-3xl sm:text-4xl text-espresso mb-3 leading-snug">
+            Nomor WhatsApp &amp; Kota domisilimu saat ini
+          </h3>
+          <p class="text-sm text-earthgray mb-6 leading-relaxed">
+            Kami hanya akan menghubungimu secara personal saat mejamu sudah siap. Tanpa pesan spam.
+          </p>
+
+          <div class="space-y-5">
+            <!-- WhatsApp Input -->
+            <div>
+              <label for="input-whatsapp" class="block text-xs uppercase tracking-[0.14em] text-earthgray mb-2">
+                Nomor WhatsApp Aktif
+              </label>
+              <input
+                type="tel"
+                id="input-whatsapp"
+                name="whatsapp"
+                autocomplete="tel"
+                placeholder="Contoh: 0812 3456 7890"
+                class="w-full bg-stonewarm/70 border border-borderwarm focus:border-terracotta px-4 py-3.5 text-base text-espresso placeholder:text-earthgray/50 rounded-xl focus:outline-none transition-colors"
+                required
+              />
+            </div>
+
+            <!-- City Domicile with Default Highlight: Surabaya + Other City Option -->
+            <div>
+              <label class="block text-xs uppercase tracking-[0.14em] text-earthgray mb-2">
+                Kota Domisili Saat Ini
+              </label>
+              <div class="flex flex-wrap gap-2.5 mb-3">
+                <button
+                  type="button"
+                  data-city-pill="Surabaya"
+                  class="city-pill active inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium bg-terracotta text-alabaster border border-terracotta transition-all"
+                >
+                  <span class="w-1.5 h-1.5 rounded-full bg-alabaster"></span>
+                  <span>Surabaya (Meja Aktif)</span>
+                </button>
+                <button
+                  type="button"
+                  data-city-pill="Jakarta"
+                  class="city-pill inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium bg-stonewarm text-earthgray border border-borderwarm hover:border-espresso transition-all"
+                >
+                  <span>Jakarta</span>
+                </button>
+                <button
+                  type="button"
+                  data-city-pill="Bandung"
+                  class="city-pill inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium bg-stonewarm text-earthgray border border-borderwarm hover:border-espresso transition-all"
+                >
+                  <span>Bandung</span>
+                </button>
+                <button
+                  type="button"
+                  data-city-pill="Yogyakarta"
+                  class="city-pill inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium bg-stonewarm text-earthgray border border-borderwarm hover:border-espresso transition-all"
+                >
+                  <span>Yogyakarta</span>
+                </button>
+                <button
+                  type="button"
+                  data-city-pill="other"
+                  class="city-pill inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium bg-stonewarm text-earthgray border border-borderwarm hover:border-espresso transition-all"
+                >
+                  <span>Kota Lainnya...</span>
+                </button>
+              </div>
+
+              <input
+                type="text"
+                id="input-city"
+                name="city"
+                value="Surabaya"
+                placeholder="Ketik nama kotamu untuk ekspansi KOVENA berikutnya..."
+                class="w-full bg-stonewarm/70 border border-borderwarm focus:border-terracotta px-4 py-3 text-sm text-espresso placeholder:text-earthgray/50 rounded-xl focus:outline-none transition-colors"
+                required
+              />
+            </div>
+
+            <p id="error-step-3" class="hidden text-xs text-terracotta">
+              Mohon lengkapi nomor WhatsApp dan kota domisilimu.
+            </p>
+          </div>
+
+          <div class="mt-8 flex items-center justify-between gap-4">
+            <button
+              type="button"
+              id="back-to-step-2"
+              class="inline-flex items-center gap-2 px-4 py-2.5 text-sm text-earthgray hover:text-espresso transition-colors"
+            >
+              <i data-lucide="arrow-left" class="w-4 h-4"></i>
+              <span>Kembali</span>
+            </button>
+
+            <button
+              type="submit"
+              id="submit-onboarding-btn"
+              class="inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-terracotta hover:bg-terracotta-hover text-alabaster text-sm sm:text-base font-medium transition-all duration-300"
+            >
+              <span>Kirim &amp; Ambil Kursi</span>
+              <i data-lucide="check" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 4: Calm Confirmation State -->
+        <div class="step-slide" data-step="4">
+          <div class="text-center py-4 space-y-6">
+            <div class="mx-auto w-14 h-14 rounded-full bg-olive/10 border border-olive/30 flex items-center justify-center text-olive">
+              <i data-lucide="sparkles" class="w-6 h-6"></i>
+            </div>
+
+            <div class="space-y-2">
+              <p class="text-xs uppercase tracking-[0.2em] text-olive">
+                Kursimu Telah Dicatat
+              </p>
+              <h3 class="font-serif text-3xl sm:text-4xl text-espresso">
+                Sampai bertemu di meja, <span id="confirm-nickname" class="italic text-terracotta">Teman</span>.
+              </h3>
+            </div>
+
+            <p class="text-sm sm:text-base text-earthgray leading-relaxed max-w-md mx-auto">
+              Terima kasih telah berbagi cerita awalmu. Tim kurasi KOVENA akan menyusun meja berempat yang hangat di <span id="confirm-city" class="text-espresso font-medium">Surabaya</span> dan menghubungi WhatsApp-mu secara personal.
+            </p>
+
+            <!-- Summary Ticket / Table Card (Non-transactional, warm keepsake) -->
+            <div class="bg-stonewarm border border-borderwarm rounded-xl p-5 text-left max-w-md mx-auto space-y-3">
+              <div class="flex items-center justify-between text-[11px] uppercase tracking-[0.16em] text-earthgray border-b border-borderwarm pb-2">
+                <span>KOVENA &mdash; THE TABLE OF FOUR</span>
+                <span class="text-terracotta">Kursi 04 / 04</span>
+              </div>
+              <p class="text-xs text-earthgray">
+                Kerinduan Obrolan:
+                <span id="confirm-longing" class="block text-sm text-espresso font-serif italic mt-0.5">
+                  &ldquo;Didengar tanpa dihakimi&rdquo;
+                </span>
+              </p>
+              <div class="flex items-center justify-between text-xs text-earthgray pt-1">
+                <span id="confirm-wa">WA: -</span>
+                <span>Sesi Tatap Muka</span>
+              </div>
+            </div>
+
+            <div class="pt-4">
+              <button
+                type="button"
+                id="finish-onboarding-btn"
+                class="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-espresso text-alabaster text-xs uppercase tracking-[0.18em] hover:bg-terracotta transition-colors"
+              >
+                <span>Kembali ke Halaman</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- Interactive Application Logic -->
+  <script src="./app.js"></script>
+</body>
+</html>

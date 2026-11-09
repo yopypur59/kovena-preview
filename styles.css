@@ -1,0 +1,308 @@
+/* ==========================================================================
+   KOVENA — The Table of Four
+   Editorial Warm Minimalism & Quiet Luxury Stylesheet
+   ========================================================================== */
+
+:root {
+  --bg-primary: #F7F5F0;
+  --bg-secondary: #EFECE6;
+  --border-subtle: #E2DDD5;
+  --text-primary: #1E1E1C;
+  --text-secondary: #605C56;
+  --accent-primary: #B85D3B;
+  --accent-hover: #9E4B2C;
+  --accent-secondary: #3A4A3E;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow-x: hidden;
+  selection-background-color: #B85D3B;
+}
+
+::selection {
+  background-color: rgba(184, 93, 59, 0.18);
+  color: #1E1E1C;
+}
+
+/* Subtle paper grain overlay for Kinfolk / Aesop tactile feel */
+.paper-grain {
+  background-image: radial-gradient(rgba(30, 30, 28, 0.03) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Scroll Reveal Animations */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 {
+  transition-delay: 120ms;
+}
+
+.reveal-delay-2 {
+  transition-delay: 240ms;
+}
+
+.reveal-delay-3 {
+  transition-delay: 360ms;
+}
+
+/* The Table of Four — Interactive Geometric Illustration */
+@keyframes pulseWarmth {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.45;
+  }
+  50% {
+    transform: scale(1.06);
+    opacity: 0.75;
+  }
+}
+
+@keyframes slowOrbit {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.ambient-glow {
+  animation: pulseWarmth 7s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.orbit-ring {
+  animation: slowOrbit 90s linear infinite;
+  transform-origin: 220px 220px;
+}
+
+.seat-node {
+  cursor: pointer;
+  transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.seat-node .seat-outer {
+  transition: r 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+              stroke 0.45s ease,
+              fill 0.45s ease;
+}
+
+.seat-node:hover .seat-outer,
+.seat-node.active .seat-outer {
+  stroke: #B85D3B;
+  fill: #F7F5F0;
+}
+
+.seat-node .seat-core {
+  transition: r 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              fill 0.4s ease;
+}
+
+.seat-node:hover .seat-core,
+.seat-node.active .seat-core {
+  fill: #B85D3B;
+}
+
+.connection-thread {
+  transition: stroke-opacity 0.5s ease, stroke-width 0.5s ease, stroke 0.5s ease;
+}
+
+.connection-thread.highlighted {
+  stroke: #B85D3B;
+  stroke-opacity: 0.65;
+  stroke-width: 1.6;
+}
+
+/* Conversation Prompt Cards Stack */
+.prompt-card-stage {
+  perspective: 1200px;
+}
+
+.prompt-card {
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+              background-color 0.4s ease,
+              border-color 0.4s ease;
+  backface-visibility: hidden;
+  transform-origin: center bottom;
+}
+
+.prompt-card[data-position="0"] {
+  z-index: 30;
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+  background-color: #F7F5F0;
+  border-color: #D5CEC2;
+  pointer-events: auto;
+}
+
+.prompt-card[data-position="1"] {
+  z-index: 20;
+  opacity: 0.72;
+  transform: translate3d(0, 14px, -30px) scale(0.965) rotate(1.1deg);
+  background-color: #EFECE6;
+  border-color: #E2DDD5;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.prompt-card[data-position="2"] {
+  z-index: 10;
+  opacity: 0.42;
+  transform: translate3d(0, 28px, -60px) scale(0.93) rotate(-1.2deg);
+  background-color: #E9E4DC;
+  border-color: #E2DDD5;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* Editorial Cards Hover Refinement */
+.pillar-card {
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.45s ease,
+              background-color 0.45s ease;
+}
+
+.pillar-card:hover {
+  transform: translateY(-3px);
+  border-color: #CFC8BC;
+}
+
+/* Modal & Onboarding Transitions */
+.modal-backdrop {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.modal-backdrop.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-panel {
+  transform: translateY(18px) scale(0.985);
+  opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.modal-backdrop.is-open .modal-panel {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.step-slide {
+  display: none;
+  animation: stepFadeIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.step-slide.active {
+  display: block;
+}
+
+@keyframes stepFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom Radio Option Card */
+.longing-option {
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.longing-option:hover {
+  border-color: #B85D3B;
+  background-color: rgba(184, 93, 59, 0.04);
+}
+
+.longing-option.selected {
+  border-color: #B85D3B;
+  background-color: rgba(184, 93, 59, 0.08);
+}
+
+.longing-option.selected .option-indicator {
+  border-color: #B85D3B;
+  background-color: #B85D3B;
+  color: #F7F5F0;
+}
+
+/* Subtle Link Underline */
+.editorial-link {
+  position: relative;
+}
+
+.editorial-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 1px;
+  background-color: #1E1E1C;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.editorial-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Reduced Motion Respect */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal-up,
+  .prompt-card,
+  .pillar-card,
+  .modal-backdrop,
+  .modal-panel,
+  .ambient-glow,
+  .orbit-ring {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
